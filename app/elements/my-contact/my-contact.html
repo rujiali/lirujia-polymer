@@ -1,6 +1,6 @@
 <dom-module id="my-contact">
     <style>
-        paper-button[toggles].colorful {
+        paper-button[raised].colorful {
             background: #4285f4;
             color: #fff;
         }
@@ -12,27 +12,29 @@
         }
     </style>
     <template>
+        <form is="iron-form" id="formPost" method="post" action="/">
         <paper-input label="Your Name"></paper-input>
         <paper-input label="Your Email"></paper-input>
         <paper-input label="Subject"></paper-input>
         <div class="vertical-section">
             <paper-textarea label="Message"></paper-textarea>
         </div>
-        <p><paper-button toggles class="colorful">Submit</paper-button></p>
+        <p><paper-button raised class="colorful" onclick="clickHandler(event)">Submit</paper-button></p>
+            <button type="submit">Native Submit</button>
+        </form>
     </template>
 </dom-module>
 <script>
     (function() {
         Polymer({
-            is: 'my-contact',
-
-            properties: {
-                greeting: {
-                    type: String,
-                    value: 'Welcome!',
-                    notify: true
-                }
-            }
+            is: 'my-contact'
         });
     })();
+    var form = document.getElementById('formPost');
+    if (form) {
+        form.addEventListener('iron-form-submit', display);
+    }
+    function clickHandler(event) {
+        console.debug(Polymer.dom(event));
+    }
 </script>
