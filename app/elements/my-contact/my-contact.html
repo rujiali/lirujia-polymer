@@ -1,0 +1,38 @@
+<dom-module id="my-contact">
+    <style>
+        paper-button[toggles].colorful {
+            background: #4285f4;
+            color: #fff;
+        }
+
+        @media (max-width: 600px) {
+            h1.paper-font-display1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+    <template>
+        <paper-input label="Your Name"></paper-input>
+        <paper-input label="Your Email"></paper-input>
+        <paper-input label="Subject"></paper-input>
+        <div class="vertical-section">
+            <paper-textarea label="Message"></paper-textarea>
+        </div>
+        <p><paper-button toggles class="colorful">Submit</paper-button></p>
+    </template>
+</dom-module>
+<script>
+    (function() {
+        Polymer({
+            is: 'my-contact',
+
+            properties: {
+                greeting: {
+                    type: String,
+                    value: 'Welcome!',
+                    notify: true
+                }
+            }
+        });
+    })();
+</script>
