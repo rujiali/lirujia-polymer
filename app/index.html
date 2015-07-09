@@ -158,7 +158,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="drupal">
               <paper-material elevation="1">
+                <iron-ajax auto url="http://lirujia.com/service/views/drupal"
+                           params='' handle-as="json" last-response="{{drupalResponse}}">
+                </iron-ajax>
                 <h2 class="paper-font-display2">Drupal</h2>
+                <my-list drupallist={{drupalResponse}}></my-list>
                 <p>This is the users section</p>
                 <a href="/users/Rob">Rob</a>
               </paper-material>
