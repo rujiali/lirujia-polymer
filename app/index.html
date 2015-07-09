@@ -69,25 +69,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Drawer Content -->
           <paper-menu class="list" attr-for-selected="data-route" selected="{{route}}" on-iron-select="onMenuSelect">
-              <a data-route="home" href="/">
-                <iron-icon icon="home"></iron-icon>
-                <span>Home</span>
-              </a>
+            <a data-route="home" href="/">
+              <iron-icon icon="home"></iron-icon>
+              <span>Home</span>
+            </a>
 
-              <a data-route="about" href="/about">
-                <iron-icon icon="info"></iron-icon>
-                <span>About Me</span>
-              </a>
+            <a data-route="drupal" href="/drupal">
+              <iron-icon class="big" src="images/drupal-icon.png"></iron-icon>
+              <span>Drupal</span>
+            </a>
 
-              <a data-route="drupal" href="/drupal">
-                <iron-icon class="big" src="images/drupal-icon.png"></iron-icon>
-                <span>Drupal</span>
-              </a>
+            <a data-route="about" href="/about">
+              <iron-icon icon="info"></iron-icon>
+              <span>About lirujia</span>
+            </a>
 
-              <a data-route="contact" href="/contact">
-                <iron-icon icon="mail"></iron-icon>
-                <span>Contact</span>
-              </a>
+            <a data-route="contact" href="/contact">
+              <iron-icon icon="mail"></iron-icon>
+              <span>Contact</span>
+            </a>
           </paper-menu>
       </div>
       <paper-header-panel main mode="waterfall-tall">
@@ -149,17 +149,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="about">
               <paper-material elevation="1">
-                <iron-ajax
-                  auto
-                  url="http://lirujia.com/service/node/1.json"
-                  params=''
-                  handle-as="json"
-                  last-response="{{ajaxResponse}}"
-                  debounce-duration="300">
+                <iron-ajax auto url="http://lirujia.com/service/node/1"
+                  params='' handle-as="json" last-response="{{ajaxResponse}}">
                 </iron-ajax>
-                <h2 class="paper-font-display2">About Me</h2>
-                <p>This is the users section</p>
-                <a href="/users/Rob">Joshua</a>
+                <my-about title={{ajaxResponse.title}} body={{ajaxResponse.body.und}}></my-about>
               </paper-material>
             </section>
 
