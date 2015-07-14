@@ -10,14 +10,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-list">
   <style>
-    :host {
-      display: block;
+    paper-material {
+      display: inline-block;
+      background: white;
+      box-sizing: border-box;
+      padding: 16px;
+      border-radius: 2px;
+      width: 90%;
     }
+
   </style>
   <template>
     <ul>
       <template is="dom-repeat" items="{{drupallist}}">
-        <paper-item><my-html html="[[item.node_title]]"></my-html></paper-item>
+        <section id="[[item.nid]]" onclick="dialogHandler(event)">
+          <paper-button data-dialog="animated" role="button" tabindex="0" aria-disabled="false" class="x-scope paper-button-0" pressed="">
+
+              <div id="{{item.nid}}">{{item.node_title}}</div>
+
+
+          </paper-button>
+          <paper-dialog id="animated" with-backdrop="" entry-animation="scale-up-animation" exit-animation="fade-out-animation" role="dialog" tabindex="-1" aria-modal="false" class="x-scope paper-dialog-0" aria-labelledby="paper-dialog-header-737" style="outline: none; box-sizing: border-box; position: static; display: none;" aria-hidden="true">
+            <iron-ajax id="article_ajax"
+                       params='' handle-as="json" last-response="{{ajaxResponse}}">
+            </iron-ajax>
+            <h2 class="paper-font-display2">{{ajaxResponse.title}}</h2>
+            <template is="dom-repeat" items = "[[ajaxResponse.body.und]]">
+              <my-html html="[[item.safe_value]]"></my-html>
+            </template>
+
+          </paper-dialog>
+        </section>
       </template>
     </ul>
   </template>
@@ -26,14 +49,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   (function () {
     Polymer({
       is: 'my-list',
-      properties: {
-        items: {
-          type: Array,
-          notify: true,
-        }
-      },
-      ready: function() {
-      }
     });
   })();
+  function dialogHandler(e) {
+    // AJAX call.
+    var nid = e.toElement.id
+      ,url = 'http://lirujia.com/service/node/' + nid
+      ,ajax = document.getElementById('article_ajax');
+
+    ajax.url = url;
+    ajax.generateRequest();
+
+    var button = e.target;
+    while (!button.hasAttribute('data-dialog') && button !== document.body) {
+      button = button.parentElement;
+    }
+
+    if (!button.hasAttribute('data-dialog')) {
+      return;
+    }
+
+    var id = button.getAttribute('data-dialog');
+    var dialog = document.getElementById(id);
+    if (dialog) {
+      dialog.open();
+    }
+  }
 </script>

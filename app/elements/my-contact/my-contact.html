@@ -13,14 +13,18 @@
     </style>
     <template>
         <form is="iron-form" id="formPost" method="post" action="/">
-        <paper-input label="Your Name"></paper-input>
-        <paper-input label="Your Email"></paper-input>
-        <paper-input label="Subject"></paper-input>
+        <paper-input name="name" label="Your Name" value="{{contact-name}}" required></paper-input>
+        <paper-input name="mail" label="Your Email" value="{{contact-mail}}" required></paper-input>
+        <paper-input name="subject" label="Subject" value="{{contact-subject}}" required></paper-input>
         <div class="vertical-section">
-            <paper-textarea label="Message"></paper-textarea>
+            <paper-textarea name="message" label="Message" value="{{contact-message}}" required></paper-textarea>
         </div>
         <p><paper-button raised class="colorful" onclick="clickHandler(event)">Submit</paper-button></p>
         </form>
+        <iron-ajax id="contact-ajax" url="http://lirujia.com/service/contact/site.json" method="post"
+                   params='{"name":"{{contact-name}}", "mail":"{{contact-mail}}", "subject":"{{contact-subject}}", "message":"{{contact-message}}"}' handle-as="json" last-response="{{ContactResponse}}">
+        </iron-ajax>
+        <paper-toast id="toast" text="Your message has been sent."></paper-toast>
     </template>
 </dom-module>
 <script>
@@ -29,11 +33,8 @@
             is: 'my-contact'
         });
     })();
-    var form = document.getElementById('formPost');
-    if (form) {
-        form.addEventListener('iron-form-submit', display);
-    }
     function clickHandler(event) {
-        console.debug(Polymer.dom(event));
+        document.querySelector('#toast').show();
+        document.querySelector('#contact-ajax').generateRequest();
     }
 </script>

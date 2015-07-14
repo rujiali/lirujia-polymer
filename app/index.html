@@ -64,7 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Drawer Toolbar -->
         <paper-toolbar id="drawerToolbar">
-          <span class="paper-font-title">Menu</span>
+          <span class="paper-font-title">lirujia李汝佳</span>
         </paper-toolbar>
 
         <!-- Drawer Content -->
@@ -158,19 +158,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <section data-route="drupal">
               <paper-material elevation="1">
-                <iron-ajax auto url="http://lirujia.com/service/views/drupal"
+                <iron-ajax auto url="http://lirujia.com/service/drupal"
                            params='' handle-as="json" last-response="{{drupalResponse}}">
                 </iron-ajax>
                 <h2 class="paper-font-display2">Drupal</h2>
                 <my-list drupallist={{drupalResponse}}></my-list>
-                <p>This is the users section</p>
-                <a href="/users/Rob">Rob</a>
               </paper-material>
             </section>
 
             <section data-route="user-info">
               <paper-material elevation="1">
-                <h2 class="paper-font-display2">
+                <h2 class="params.name">
                 User:<span>{{params.name}}</span>
                 </h2>
                 <div>This is <span>{{params.name}}</span>'s section</div>
