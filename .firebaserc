@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "polymer": "lirujia-polymer",
+    "default": "lirujia-polymer"
+  }
+}
