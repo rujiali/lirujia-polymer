@@ -1,0 +1,20 @@
+<dom-module id="my-html">
+
+    <template>
+        <div id="div">
+        </div>
+    </template>
+
+    <script>
+        (function() {
+            Polymer({
+                is: 'my-html',
+                ready: function() {
+                    this.$.div.innerHTML = this.html;
+                }
+            });
+        })();
+    </script>
+
+
+</dom-module>

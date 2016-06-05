@@ -9,8 +9,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="my-node.html">
 
-<dom-module id="my-view1">
+<dom-module id="my-about">
 
   <template>
 
@@ -27,17 +29,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-color: #fff;
         color: #757575;
       }
-      .circle {
-        display: inline-block;
-        height: 64px;
-        width: 64px;
-        border-radius: 50%;
-        background: #ddd;
-        line-height: 64px;
-        font-size: 30px;
-        color: #555;
-        text-align: center;
-      }
       h1 {
         font-size: 22px;
         margin: 16px 0;
@@ -45,11 +36,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
+    <iron-ajax auto url="https://lirujia.com/node/9/" params='{"_format":"json"}'
+            handle-as="json"
+            last-response="{{ajaxResponse}}">
+    </iron-ajax>
+
     <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+      <my-node title={{ajaxResponse.title}} body={{ajaxResponse.body}}></my-node>
     </div>
 
   </template>
@@ -58,7 +51,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     Polymer({
 
-      is: 'my-view1'
+      is: 'my-about',
 
     });
 

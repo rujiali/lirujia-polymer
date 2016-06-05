@@ -1,0 +1,23 @@
+<link rel="import" href="my-html.html">
+
+<dom-module id="my-node">
+
+    <template>
+        <template is="dom-repeat" items = "[[title]]">
+            <h2 class="paper-font-display2">[[item.value]]</h2>
+        </template>
+        <template is="dom-repeat" items = "[[body]]">
+            <my-html html="[[item.value]]"></my-html>
+        </template>
+    </template>
+
+    <script>
+        (function() {
+            Polymer({
+                is: 'my-node',
+            });
+        })();
+    </script>
+
+
+</dom-module>
