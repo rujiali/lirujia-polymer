@@ -77,7 +77,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="home" href="/home">Home</a>
           <a name="about" href="/about">About</a>
-          <a name="view3" href="/view3">View Three</a>
+          <a name="view3" href="/drupal">Drupal</a>
         </iron-selector>
       </app-drawer>
 
@@ -87,14 +87,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>李汝佳 playing Polymer</div>
+            <div title>李汝佳 playing with Polymer</div>
           </app-toolbar>
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
           <my-home name="home"></my-home>
           <my-about name="about"></my-about>
-          <my-view3 name="view3"></my-view3>
+          <my-drupal name="drupal"></my-drupal>
         </iron-pages>
 
       </app-header-layout>
