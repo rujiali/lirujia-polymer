@@ -4,6 +4,6 @@
   "fragments": [
     "src/my-home.html",
     "src/my-about.html",
-    "src/my-view3.html"
+    "src/my-drupal.html"
   ]
 }
