@@ -11,7 +11,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-list/iron-list.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="my-node.html">
+<link rel="import" href="my-title.html">
+<link rel="import" href="my-body.html">
 
 <dom-module id="my-drupal">
 
@@ -21,14 +22,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
         padding: 10px;
-      }
-      .card {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        margin: 24px;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #757575;
       }
       h1 {
         font-size: 22px;
@@ -44,45 +37,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           border-bottom: 1px solid #ddd;
         };
       }
-      .item {
-        @apply(--layout-horizontal);
-        padding: 20px;
-        background-color: white;
-        border: 1px solid #ddd;
-        cursor: pointer;
-        margin-bottom: 10px;
-      }
       .pad {
         padding: 0 16px;
         @apply(--layout-flex);
         @apply(--layout-vertical);
       }
-      .primary {
+      .title {
         font-size: 16px;
         font-weight: bold;
       }
-      .shortText, .longText {
+      .title, .body {
         font-size: 14px;
       }
-      .longText {
+      .body {
         color: gray;
         display: none;
       }
-      .item:hover .shortText::after {
+      .item:hover .title::after {
         content: ' [+]';
         color: gray;
       }
-      .item.expanded:hover .shortText::after {
+      .item.expanded:hover .title::after {
         content: '';
       }
-      .item.expanded .longText {
+      .item.expanded .body {
         display: block;
       }
-      .item.expanded:hover .longText::after {
+      .item.expanded:hover .body::after {
         content: ' [–]';
-      }
-      .spacer {
-        @apply(--layout-flex);
       }
     </style>
 
@@ -96,7 +78,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div>
           <div class$="[[getClassForItem(item, selected)]]" tabindex$="[[tabIndex]]">
             <div class="pad">
-                <my-node title={{item.title}} body=''></my-node>
+              <template is="dom-repeat" items="{{item.nid}}">
+                <div class="title">
+                  <my-title nid=[[item.value]]></my-title>
+                </div>
+                <div class="body">
+                  <my-body nid=[[item.value]]></my-body>
+                </div>
+              </template>
             </div>
             <iron-icon icon$="[[iconForItem(item)]]"></iron-icon>
           </div>

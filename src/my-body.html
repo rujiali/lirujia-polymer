@@ -1,6 +1,6 @@
 <link rel="import" href="my-html.html">
 
-<dom-module id="my-node">
+<dom-module id="my-body">
 
     <template>
         <iron-ajax auto url="https://lirujia.com/node/{{nid}}" params='{"_format":"json"}'
@@ -8,22 +8,15 @@
                    last-response="{{ajaxResponse}}">
         </iron-ajax>
 
-        <template is="dom-repeat" items = "{{ajaxResponse.title}}">
-            <div class="title">
-                <h2 class="paper-font-display2">[[item.value]]</h2>
-            </div>
-        </template>
         <template is="dom-repeat" items = "{{ajaxResponse.body}}">
-            <div class="body">
-                <my-html html="[[item.value]]"></my-html>
-            </div>
+            <my-html html="[[item.value]]"></my-html>
         </template>
     </template>
 
     <script>
         (function() {
             Polymer({
-                is: 'my-node',
+                is: 'my-body',
                 properties: {
                     nid: String
                 }

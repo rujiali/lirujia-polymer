@@ -36,13 +36,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
-    <iron-ajax auto url="https://lirujia.com/node/9/" params='{"_format":"json"}'
-            handle-as="json"
-            last-response="{{ajaxResponse}}">
-    </iron-ajax>
 
     <div class="card">
-      <my-node title={{ajaxResponse.title}} body={{ajaxResponse.body}}></my-node>
+      <my-node nid="9"></my-node>
     </div>
 
   </template>
