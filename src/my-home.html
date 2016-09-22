@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="my-node.html">
 
 <dom-module id="my-home">
 
@@ -35,9 +37,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      <h1>Homepage</h1>
-      <p>This is a webapp for <a href="http://lirujia.com">lirujia.com</a>
-      <p>It is using <a href="https://www.polymer-project.org/1.0/">Polymer</a> in the frontend and using <a href="https://drupal.org">Drupal 8</a> as the backend content management system.</p>
+      <my-node nid="12"></my-node>
     </div>
 
   </template>
