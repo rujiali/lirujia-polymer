@@ -19,7 +19,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="my-icons.html">
+<link rel="import" href="my-node.html">
 
 <dom-module id="my-app">
 
@@ -68,6 +70,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         pattern="/:page"
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
+    <app-route
+            route="{{subroute}}"
+            pattern="/:id"
+            data="{{subrouteData}}">
+    </app-route>
 
     <app-drawer-layout fullbleed>
 
@@ -95,6 +102,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <my-home name="home"></my-home>
           <my-about name="about"></my-about>
           <my-drupal name="drupal"></my-drupal>
+          <my-node name="node" nid="{{subrouteData.id}}"></my-node>
         </iron-pages>
 
       </app-header-layout>
